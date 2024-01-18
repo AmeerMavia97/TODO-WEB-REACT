@@ -17,6 +17,9 @@ const Login = () => {
     //LOGIN USER
     function LoginUser(e) {
         e.preventDefault();
+        setloading(!loading)
+
+
         const Email = email.current.value
         const Password = password.current.value
         const ConfirmPassword = confirmPassword.current.value

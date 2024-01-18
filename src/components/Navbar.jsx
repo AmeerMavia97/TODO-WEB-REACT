@@ -17,7 +17,7 @@ const Navbar = () => {
             if (user) {
                 const uid = user.uid;
                 console.log(uid);
-                const q = query(collection(db, "RegisterUsers"), );
+                const q = query(collection(db, "RegisterUsers"), where('Uid' , '==' , uid));
                 const querySnapshot = await getDocs(q);
 
                 querySnapshot.forEach((doc) => {
