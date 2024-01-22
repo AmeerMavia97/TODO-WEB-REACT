@@ -6,7 +6,7 @@ import { auth } from '../../Config/Firebase/config'
 const Login = () => {
   // STATE
   const [ShowError, setshowError] = useState()
-  const [Loading , setLoading] = useState(true)
+  const [Loading , setLoading] = useState(false)
 
   //REF
   const email = useRef()
