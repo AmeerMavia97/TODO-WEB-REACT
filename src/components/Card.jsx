@@ -1,5 +1,4 @@
 import React, { useRef, useState } from 'react'
-import Navbar from './Navbar'
 
 const Card = ({title , DeleteTodo , EditTodo ,index}) => {
     const [Edit, setEdit] = useState(true)

@@ -1,5 +1,4 @@
 import React, { useContext, useEffect, useState } from 'react'
-import Pic from '../assets/react.svg'
 import { signOut } from "firebase/auth";
 import { auth , } from '../Config/Firebase/config'
 import { useNavigate } from 'react-router-dom';
