@@ -38,7 +38,7 @@ const Navbar = () => {
                 <p className="pl-[20px] pr-[20px] mt-[14px]  pt-[2px] pb-1 text-center mb-3  border-gray-300 border-[2px] border-solid rounded-[30px] text-xs text-[#e6ebf0]" >{Loading ? <span className="mt-2 loading loading-infinity loading-md"></span>:  Data[0]}</p>
                 <p type="button" className="font-poppins mt-4">Profile</p>
                 <p type="button" className="font-poppins mt-4">About</p>
-                <p type="button" className="font-poppins mt-4" onClick={LogoutUser}>Logout</p>
+                <p type="button" className="cursor-pointer font-poppins mt-4" onClick={LogoutUser}>Logout</p>
                 <img className="w-10 h-10 mt-1 rounded-full" src={Data[1]} alt="" />
             </div>
         </nav>

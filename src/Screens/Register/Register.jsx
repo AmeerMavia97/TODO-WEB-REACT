@@ -11,7 +11,7 @@ const Register = () => {
   //State
   const [ShowError, setshowError] = useState()
   const [selectedFile, setselectedFile] = useState(null)
-  const [Loading , setLoading] = useState(true)
+  const [Loading , setLoading] = useState(false)
 
   //REF
   const email = useRef()

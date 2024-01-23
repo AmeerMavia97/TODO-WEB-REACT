@@ -3,7 +3,7 @@ import Navbar from '../../Components/Navbar'
 import Card from '../../Components/Card'
 import Fotter from '../../Components/Fotter'
 import { onAuthStateChanged } from 'firebase/auth'
-import { collection, deleteDoc, doc, addDoc, Timestamp, getDocs, query, where ,updateDoc } from "firebase/firestore";
+import { collection, deleteDoc, doc, addDoc, Timestamp, getDocs, query, where ,updateDoc, orderBy } from "firebase/firestore";
 import { auth, db } from '../../Config/Firebase/config'
 import { useNavigate } from 'react-router-dom'
 
@@ -12,6 +12,7 @@ const Home = () => {
 
   // STATE
   const [ALLTodo, setAllTodo] = useState([])
+  const [getuid , setgetuid] =useState()
 
   //NAVIGATE
   const navigate = useNavigate()
@@ -21,35 +22,45 @@ const Home = () => {
 
   // ON AUTH STATE FUNCTION
   let Uid;
-  onAuthStateChanged(auth, (user) => {
-    if (user) {
-      Uid = user.uid;
-
-    } else {
-      navigate('/')
-    }
-  });
+  useEffect(()=>{
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        Uid = user.uid;
+        setgetuid(Uid)
+  
+      } else {
+        navigate('/')
+      }
+    });
+  }, [])
+ 
+  console.log(getuid);
 
 
   useEffect(() => {
+    console.log('run');
 
     async function getDataFromFireStore() {
-      const q = query(collection(db, "Todo"),);
+
+
+      const q = query(collection(db, "Todo"),where('Useruid' , '==' , getuid));
 
       const querySnapshot = await getDocs(q);
+      console.log('hello');
 
       querySnapshot.forEach((doc) => {
-        // console.log(doc.data().Todoes + doc.id);
         ALLTodo.push({ docId: doc.id, ...doc.data() })
         setAllTodo([...ALLTodo])
 
       });
 
+      console.log('run3');
+
     }
 
     getDataFromFireStore()
 
-  }, [])
+  }, [getuid])
 
 
 
